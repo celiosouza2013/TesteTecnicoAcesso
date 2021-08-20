@@ -4,6 +4,6 @@ namespace Api.Transferencia.Services
 {
     public interface INotificationService
     {
-        void NotifyTransference(DataTransfer dataTransfer);
+        void NotifyTransference(TransferOutput dataTransfer);
     }
 }

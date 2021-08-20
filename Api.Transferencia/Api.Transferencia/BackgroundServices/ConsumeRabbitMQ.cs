@@ -15,6 +15,9 @@ using System.Threading.Tasks;
 
 namespace Api.Transferencia.BackgroundServices
 {
+    /// <summary>
+    /// Classe para criar serviço em segundo plano
+    /// </summary>
     public class ConsumeRabbitMQ : BackgroundService
     {
         private readonly RabbitMqConfiguration _configuration;
@@ -51,7 +54,11 @@ namespace Api.Transferencia.BackgroundServices
             }
            
         }
-
+        /// <summary>
+        /// Método para consumo de item de de fila 
+        /// </summary>
+        /// <param name="stoppingToken"></param>
+        /// <returns></returns>
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
             try
@@ -62,7 +69,7 @@ namespace Api.Transferencia.BackgroundServices
                 {
                     var contentArray = eventArgs.Body.ToArray();
                     var contentString = Encoding.UTF8.GetString(contentArray);
-                    var _dataTransfer = JsonConvert.DeserializeObject<DataTransfer>(contentString);
+                    var _dataTransfer = JsonConvert.DeserializeObject<TransferOutput>(contentString);
 
                     NotifyTransference(_dataTransfer);
 
@@ -81,7 +88,7 @@ namespace Api.Transferencia.BackgroundServices
             
         }
 
-        public void NotifyTransference(DataTransfer _dataTransfer)
+        public void NotifyTransference(TransferOutput _dataTransfer)
         {
             using (var scope = _serviceProvider.CreateScope())
             {

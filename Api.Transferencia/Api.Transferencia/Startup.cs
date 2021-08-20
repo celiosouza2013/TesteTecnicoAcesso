@@ -1,8 +1,11 @@
 using Api.Transferencia.BackgroundServices;
 using Api.Transferencia.Configurations;
+using Api.Transferencia.Data;
+using Api.Transferencia.Repositories;
 using Api.Transferencia.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,7 +26,13 @@ namespace Api.Transferencia
         {
             services.Configure<RabbitMqConfiguration>(Configuration.GetSection("RabbitMqConfig"));
             services.AddScoped<INotificationService, NotificationService>();
+            
+            services.AddSingleton<IPublishMessage, PublishMessage>();
             services.AddHostedService<ConsumeRabbitMQ>();
+           
+            services.AddDbContext<DataContext>(opt => opt.UseInMemoryDatabase("InMemory"));
+            services.AddDbContext<DataContext>();
+            services.AddScoped<ITransferRepository, TransferRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
