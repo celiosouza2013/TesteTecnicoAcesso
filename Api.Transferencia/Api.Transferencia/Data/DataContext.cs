@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Api.Transferencia.Data
 {
+    /// <summary>
+    /// Classe que implementa da conexão com Banco de Dados
+    /// </summary>
     public class DataContext : DbContext
     {
         public DataContext(DbContextOptions<DataContext> options)

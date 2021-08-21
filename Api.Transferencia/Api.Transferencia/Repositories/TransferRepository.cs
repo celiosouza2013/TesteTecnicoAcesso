@@ -8,11 +8,19 @@ using System.Threading.Tasks;
 
 namespace Api.Transferencia.Repositories
 {
+    /// <summary>
+    /// Classe responsável por persistir informações de transferência
+    /// </summary>
     public class TransferRepository : ITransferRepository
     {
         private readonly DataContext _context;
         public TransferRepository(DataContext context) => _context = context;
-
+        
+        /// <summary>
+        /// Insere Tranferência
+        /// </summary>
+        /// <param name="transferInputDto"></param>
+        /// <returns></returns>
         public async Task<TransferInput> AddAsync(TransferInputDto transferInputDto)
         {
             try
@@ -31,6 +39,11 @@ namespace Api.Transferencia.Repositories
             }
             catch { throw; }
         }
+       
+        /// <summary>
+        /// Lista Tranferências salvas
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<TransferInput>> GetTransferInputsAsync()
         {
             try

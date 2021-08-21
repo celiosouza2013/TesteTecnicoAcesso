@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 namespace Api.Transferencia.BackgroundServices
 {
     /// <summary>
-    /// Classe para criar serviço em segundo plano
+    /// Classe responsável para criar serviço em segundo plano
     /// </summary>
     public class ConsumeRabbitMQ : BackgroundService
     {
@@ -49,7 +49,6 @@ namespace Api.Transferencia.BackgroundServices
             }
             catch (Exception)
             {
-
                 throw;
             }
            
@@ -82,10 +81,8 @@ namespace Api.Transferencia.BackgroundServices
             }
             catch (Exception)
             {
-
                 throw;
-            }
-            
+            }            
         }
 
         public void NotifyTransference(TransferOutput _dataTransfer)

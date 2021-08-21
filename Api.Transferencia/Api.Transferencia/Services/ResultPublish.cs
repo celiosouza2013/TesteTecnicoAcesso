@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Api.Transferencia.Services
+﻿namespace Api.Transferencia.Services
 {
     /// <summary>
     /// Resultado do envio de item para fila

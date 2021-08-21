@@ -4,8 +4,6 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -63,9 +61,10 @@ namespace Api.Transferencia.Services
                 result.Message = "Erro ao tentar publicar Mensagem"; 
                 return result;
             }
-
+            
             result.SuccessfullyExecuted = true;
             result.Message = "Mensagem enviada para fila com sucesso!";
+            await Task.Yield(); //Resolver warning de métodos assíncronos 
             return result;
         }
     }
