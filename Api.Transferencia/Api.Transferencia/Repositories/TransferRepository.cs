@@ -17,7 +17,7 @@ namespace Api.Transferencia.Repositories
         public TransferRepository(DataContext context) => _context = context;
         
         /// <summary>
-        /// Insere Tranferência
+        /// Insere dados da Tranferência para historioco de transações
         /// </summary>
         /// <param name="transferInputDto"></param>
         /// <returns></returns>
@@ -41,7 +41,7 @@ namespace Api.Transferencia.Repositories
         }
        
         /// <summary>
-        /// Lista Tranferências salvas
+        /// Lista os dados de transferencias salvos no histórico
         /// </summary>
         /// <returns></returns>
         public async Task<List<TransferInput>> GetTransferInputsAsync()

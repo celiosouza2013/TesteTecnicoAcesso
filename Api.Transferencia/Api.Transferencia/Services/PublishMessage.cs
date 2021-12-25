@@ -23,7 +23,7 @@ namespace Api.Transferencia.Services
             };
         }
         /// <summary>
-        /// Método resposável por publicar mensagem na fila
+        /// Método responsável por publicar mensagem na fila
         /// </summary>
         /// <param name="message">Dados da Mensagem</param>
         /// <returns></returns>
